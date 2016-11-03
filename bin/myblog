@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+import program from 'commander'
+import preview from '../lib/cmd_preview'
+
+program.version('0.0.1')
+
+// Help 命令
+program
+  .command('help')
+  .description('显示使用帮助')
+  .action(() => {
+    program.outputHelp()
+  })
+
+// create 命令
+program
+  .command('create [dir]')
+    .description('创建一个空的博客')
+    .action(dir => {
+      console.log(`create ${dir}`)
+    })
+
+// preview 命令
+program
+  .command('preview [dir]')
+    .description('实时预览')
+    .action(preview)
+
+// build 命令
+program
+  .command('build [dir]')
+  .description('编译生成整站静态 HTML')
+  .option('-o, --output <dir>', '生成的静态 HTML 存储目录')
+  .action((dir, options) => {
+    console.log(dir, options.output)
+  })
+
+// 开始解析命令
+program.parse(process.argv)
