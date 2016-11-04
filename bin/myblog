@@ -2,6 +2,7 @@
 
 import program from 'commander'
 import preview from '../lib/cmd_preview'
+// import {package} from '../package.json'
 
 program.version('0.0.1')
 
